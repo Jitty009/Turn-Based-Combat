@@ -24,13 +24,13 @@ public class TurnOrder {
     
     private void addInitiativeOrder() {
         for (int i = 0 ; i < characterList.size() ; i++) {
-            initiativeOrder.add(characterList[i].getInitiative());
+            initiativeOrder.add((characterList.get(i)).getInitiative());
         }
     }
     
     private void sortInitiativeOrder() {
         for (int i = 1 ; i < initiativeOrder.size() ; i++) {
-            for (int j = i ; initiativeOrder[j] > initiativeOrder[(j - 1)] ; j--) {
+            for (int j = i ; initiativeOrder.get(j) > initiativeOrder.get(j-1) ; j--) {
                 Collections.swap(initiativeOrder, j, j-1);
             }
         }
