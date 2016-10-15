@@ -15,27 +15,32 @@ public class Character {
             private int health;
             private String name;
             private int idNumber;
+            private int initiative;
             private static int numberOfCharacters = 0;
             
             Character() {
                 health = 100;
                 name = "Default";
                 idNumber = ++numberOfCharacters;
+                initiative = (int)(Math.random() * 50) + 1
             }        
             Character(int maxHP) {
                 health = maxHP;
                 name = "Default";
                 idNumber = ++numberOfCharacters;
+                initiative = (int)(Math.random() * 50) + 1
             }
             Character(String charName) {
                 health = 100;
                 name = charName;
                 idNumber = ++numberOfCharacters;
+                initiative = (int)(Math.random() * 50) + 1
                         }
             Character(String charName, int maxHP) {
                 health = maxHP;
                 name = charName;
                 idNumber = ++numberOfCharacters;
+                initiative = (int)(Math.random() * 50) + 1
             }
         
             private boolean alive = true;
@@ -43,6 +48,9 @@ public class Character {
             
             int getIdNumber() {
                 return idNumber;
+            }
+            int getInitiative() {
+                return initiative;
             }
             int getHealth() {
                 return health;
