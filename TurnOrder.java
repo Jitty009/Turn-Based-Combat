@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author Jitty
  */
 public class TurnOrder {
+    //turnCounter should probably be private and be replaced in the other parts of the code with the getTurnCounter method.
     static int turnCounter = 0;
     private static int turnCounterDisplay = 1;
     public static ArrayList<Integer> turnOrder = new ArrayList();
