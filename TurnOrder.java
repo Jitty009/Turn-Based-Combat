@@ -25,6 +25,9 @@ public class TurnOrder {
     private void addInitiativeOrder() {
         for (int i = 0 ; i < characterList.size() ; i++) {
             initiativeOrder.add((characterList.get(i)).getInitiative());
+            // If characterList.get(i).getInitiative() doesn't work, use this:
+            //  target = characterList.get(i);
+            //  initiativeOrder.add(target.getInitiative());
         }
     }
     
@@ -32,7 +35,17 @@ public class TurnOrder {
         for (int i = 1 ; i < initiativeOrder.size() ; i++) {
             for (int j = i ; initiativeOrder.get(j) > initiativeOrder.get(j-1) ; j--) {
                 Collections.swap(initiativeOrder, j, j-1);
+                Collections.swap(characterList, j, j-1);
             }
+        }
+    }
+    
+    private void addTurnOrder() {
+        //When the Initiative ArrayList is sorted greatest to least, this should iterate through it and add the ID Numbers of its elements
+        // to the turnOrder ArrayList.
+        //turnOrder.add(target.getIdNumber());
+        for (int i = 0 ; i < characterList.size() ; i++) {
+            turnOrder.add((characterList.get(i)).getIdNumber());
         }
     }
     
@@ -40,11 +53,8 @@ public class TurnOrder {
         addCharacterList(target);
         addInitiativeOrder;
         sortInitiativeOrder();
+        addTurnOrder();
     }
     
-    void addTurnOrder(Character target) {
-        //When the Initiative ArrayList is sorted greatest to least, this should iterate through it and add the ID Numbers of its elements
-        // to the turnOrder ArrayList.
-        turnOrder.add(target.getIdNumber());
-    }
+    
 }
