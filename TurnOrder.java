@@ -13,10 +13,18 @@ import java.util.ArrayList;
  */
 public class TurnOrder {
     static int turnCounter = 0;
-    static int turnCounterDisplay = 1;
+    private static int turnCounterDisplay = 1;
     public static ArrayList<Integer> turnOrder = new ArrayList();
     static ArrayList<Character> characterList = new ArrayList();
     static ArrayList<Integer> initiativeOrder = new ArrayList();
+    
+    int getTurnCounter() {
+        return turnCounter;
+    }
+    
+    int getTurnCounterDisplay() {
+        return turnCounterDisplay;
+    }
     
     private void addCharacterList(Character target) {
         characterList.add(target);   
@@ -56,5 +64,19 @@ public class TurnOrder {
         addTurnOrder();
     }
     
+    void displayTurnOrder() {
+        System.out.println("The current turn order is: ");
+        for (i = 0 ; i < characterList.size() ; i++) {
+            if ((i+1) == characterList.size) {
+                System.out.println((characterList.get(i)).getName() + ".");
+            }
+            else {
+                System.out.println((characterList.get(i)).getName() + ", ");
+            }
+        }
+    }
     
+    void displayTurnNumber() {
+        System.out.println("It is currently turn " + getTurnCounterDisplay() + ".");
+    }
 }
