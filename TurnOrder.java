@@ -48,6 +48,7 @@ public class TurnOrder {
             }
         }
     }
+    // I need some way of testing for identical initiative values so that there's not a slight bias toward the first Character added to the list.
     
     private void addTurnOrder() {
         //When the Initiative ArrayList is sorted greatest to least, this should iterate through it and add the ID Numbers of its elements
