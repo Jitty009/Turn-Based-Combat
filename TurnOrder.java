@@ -6,6 +6,7 @@
 package preliminary.turn.based.combat;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -45,6 +46,12 @@ public class TurnOrder {
             for (int j = i ; initiativeOrder.get(j) > initiativeOrder.get(j-1) ; j--) {
                 Collections.swap(initiativeOrder, j, j-1);
                 Collections.swap(characterList, j, j-1);
+                if (j == 1) {
+                    break;
+                    // This avoids an Out of Bounds thrown exception by keeping the loop
+                    // from continuing with j == 0, which would try to reference j-1 (-1)
+                    // in the ArrayList, which doesn't exist.
+                }
             }
         }
     }
@@ -59,17 +66,19 @@ public class TurnOrder {
         }
     }
     
-    void establishInitiative(Character... target) {
-        addCharacterList(target);
-        addInitiativeOrder;
+    void establishInitiative(Character... targetList) {
+        for (int i = 0 ; i < targetList.length ; i++) {
+        addCharacterList(targetList[i]);
+        }
+        addInitiativeOrder();
         sortInitiativeOrder();
         addTurnOrder();
     }
     
     void displayTurnOrder() {
         System.out.println("The current turn order is: ");
-        for (i = 0 ; i < characterList.size() ; i++) {
-            if ((i+1) == characterList.size) {
+        for (int i = 0 ; i < characterList.size() ; i++) {
+            if ((i+1) == characterList.size()) {
                 System.out.println((characterList.get(i)).getName() + ".");
             }
             else {
